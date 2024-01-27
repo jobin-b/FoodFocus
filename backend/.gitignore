@@ -1,1 +1,11 @@
-run_flask_linux
+.idea/
+.vscode/
+__pycache__/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+docs/_build/
+dist/
+venv/
+env/run_flask_linux
