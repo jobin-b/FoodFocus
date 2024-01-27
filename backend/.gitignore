@@ -8,4 +8,6 @@ htmlcov/
 docs/_build/
 dist/
 venv/
-env/run_flask_linux
+env/
+run_flask_linux
+
