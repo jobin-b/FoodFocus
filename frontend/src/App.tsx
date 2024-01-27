@@ -1,9 +1,13 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+// initialize react router
 
-function App() {
-  return <div className="App"></div>;
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<div>Home</div>} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App;
