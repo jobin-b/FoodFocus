@@ -7,7 +7,7 @@ import cv2
 from skimage import io
 import os
 import requests
-from app import key
+from app import EDAMAME_KEY
 
 root_dir = os.path.dirname(__file__)
 labelmap_dir = os.path.join(root_dir, "model/aiy_food_V1_labelmap.csv")
@@ -37,7 +37,9 @@ def predict_image(image_path):
     return model_label_map_classes[predicted_index]
 
 def request_nutrition(food_item):
-    response = requests.get(f'https://api.edamam.com/api/nutrition-data?app_id=8997459b&app_key={key}&nutrition-type=logging&ingr={food_item}').json()
+    response = requests.get(f'https://api.edamam.com/api/nutrition-data?app_id=8997459b&app_key={EDAMAME_KEY}&nutrition-type=logging&ingr={food_item}').json()
+    if response is None:
+        return None
 
     output = {
         "name" : food_item,
