@@ -23,7 +23,7 @@ input_shape = (224, 224)
 
 
 model_label_map_classes = list(pd.read_csv(labelmap_dir)["name"])
-def PredictImage(image_path):
+def predict_image(image_path):
     image = np.asarray(io.imread(image_path), dtype="float")
     image = cv2.resize(image, dsize=input_shape, interpolation=cv2.INTER_CUBIC)
     # Scale values to [0, 1].
@@ -36,9 +36,9 @@ def PredictImage(image_path):
     print("Prediction: ", model_label_map_classes[predicted_index])
     return model_label_map_classes[predicted_index]
 
-def RequestNutrition(food_item):
+def request_nutrition(food_item):
     response = requests.get(f'https://api.edamam.com/api/nutrition-data?app_id=8997459b&app_key={key}&nutrition-type=logging&ingr={food_item}').json()
-    
+
     output = {
         "name" : food_item,
         "calories" : response['calories'],
@@ -52,7 +52,7 @@ def RequestNutrition(food_item):
     return output
 
     
-prediciton = PredictImage(test_url)
-proper_json = RequestNutrition(prediciton)
-print(proper_json)
+# prediciton = predict_image(test_url)
+# proper_json = request_nutrition(prediciton)
+# print(proper_json)
     
