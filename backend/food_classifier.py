@@ -38,7 +38,7 @@ def PredictImage(image_path):
 
 def RequestNutrition(food_item):
     response = requests.get(f'https://api.edamam.com/api/nutrition-data?app_id=8997459b&app_key={key}&nutrition-type=logging&ingr={food_item}').json()
-
+    
     output = {
         "name" : food_item,
         "calories" : response['calories'],
