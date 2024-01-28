@@ -12,10 +12,14 @@ export default function Home() {
   }
   console.log(isAuthenticated);
   return (
-    <div className="">
-      <LoginButton />
-      <p className="text-2xl font-bold underline">Hello world!</p>
-      <p>PLEASE PLEASE USE THE WEBSITE!!!</p>
+    <div className="w-screen h-screen p-20 bg-stone-50">
+      <div className="bg-white h-full w-full flex flex-col justify-center items-center gap-20 shadow-[0_0_5px_5px] shadow-stone-100 rounded-3xl">
+        <div className="flex flex-col items-center">
+          <h1 className="text-6xl font-bold py-2">Food Focus</h1>
+          <h2 className="text-2xl">Nutrition tracking made <span className="underline">easier</span></h2>
+        </div>
+        <LoginButton/>
+      </div>
     </div>
   );
 }
