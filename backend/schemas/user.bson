@@ -1,4 +1,4 @@
 user_schema = {
-    "_id" : "key"
+    "_id" : "key",
     "email" : "string"
 }

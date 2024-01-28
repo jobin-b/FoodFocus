@@ -7,7 +7,7 @@ import cv2
 from skimage import io
 import os
 import requests
-from app import EDAMAME_KEY
+from backend import EDAMAME_KEY
 
 root_dir = os.path.dirname(__file__)
 labelmap_dir = os.path.join(root_dir, "model/aiy_food_V1_labelmap.csv")
