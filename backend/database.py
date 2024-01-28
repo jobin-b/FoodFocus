@@ -1,7 +1,9 @@
 import bson
 #from bson import json_util
 
-from flask import current_app, g
+from flask import current_app, g, jsonify
+import json
+from json import JSONEncoder
 from werkzeug.local import LocalProxy
 from flask_pymongo import PyMongo
 from food_classifier import nutr_from_img
@@ -9,6 +11,7 @@ from pymongo.errors import DuplicateKeyError, OperationFailure
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
 from datetime import datetime
+from bson import json_util
 
 import os
 
@@ -117,8 +120,13 @@ def add_meal(db,img_filepath,user_id, date):
 
 
 def get_meals_by_day(db, user_id,date):
-    day_id =  db.days.find({"user_id": user_id, "time": date})['_id']
-    return db.meals.find({"dayid": day_id})
+    day =  db.days.find({"user_id": user_id, "time": date})
+
+    if(day is None):
+        return None
+    
+    
+    return db.meals.find({"dayid": ObjectId(str(day.inserted_id))})
 
 def get_meal(db, meal_id):
     return db.meals.find_one({"_id": ObjectId(meal_id)})
