@@ -7,6 +7,8 @@ import cv2
 from skimage import io
 import os
 import requests
+from io import BytesIO
+from PIL import Image
 from dotenv import load_dotenv
 load_dotenv('env/.env')
 
@@ -25,7 +27,9 @@ input_shape = (224, 224)
 
 model_label_map_classes = list(pd.read_csv(labelmap_dir)["name"])
 def predict_image(image_path):
-    image = np.asarray(io.imread(image_path), dtype="float")
+    #image = np.asarray(io.imread(image_path), dtype="float")
+    img = Image.open(BytesIO(image_path.read()))
+    image = np.asarray(img)
     image = cv2.resize(image, dsize=input_shape, interpolation=cv2.INTER_CUBIC)
     # Scale values to [0, 1].
     image = image / image.max()
@@ -52,6 +56,7 @@ def request_nutrition(food_item):
         "carbon": response['totalCO2Emissions'],
         "carbon_class": response['co2EmissionsClass']
     }
+    print(output)
     return output
 
 def nutr_from_img(img_path):

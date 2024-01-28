@@ -32,7 +32,12 @@ def get_user(db, email):
     if user is None:
         doc = {
             "_id": email,
-            "email": email
+            "email": email,
+            "macros":
+            {"calories": 2000,
+            "protein": 150,
+            "carbohydrates": 200,
+            "fat": 67,}
         }
         
         res = db.user.insert_one(doc)
@@ -128,3 +133,12 @@ def delete_meal(db, meal_id):
 
 def get_day(db, day_id):
     return db.days.find({"_id": ObjectId(day_id)})
+
+def get_day_from_date(db, user_id, date):
+    return db.days.find({"user_id": user_id, "time": date})
+
+def get_macros(db, user_id):
+    return db.user.find({"_id": user_id})["macros"]
+
+def update_macros(db, user_id, macros):
+    return db.user.update_one({"_id": user_id}, {"$set": {"macros": macros}})
