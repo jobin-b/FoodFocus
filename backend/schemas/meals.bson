@@ -1,14 +1,13 @@
 meals_schema = {
     "_id": "key",
+    "user_id": "string",
     "name": "string",
     "user_id": "ObjectId" ,
-    "date_id": "ObjectId",
+    "day_id": "ObjectId",
     "carbon": "number",
     "carbon_class" : "string",
     "calories": "number",
-    "nutrients": {
-        "protein": "number",
-        "carbohydrates": "number",
-        "fat": "number",
-    }
+    "protein": "number",
+    "carbohydrates": "number",
+    "fat": "number",
 }

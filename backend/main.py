@@ -3,7 +3,7 @@ from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
-from database import get_db
+
 
 
 app = Flask(__name__)
@@ -12,6 +12,8 @@ load_dotenv('env/.env')
 
 app.config['DEBUG'] = True
 app.config['MONGO_URI'] = os.getenv('MONGO_URI')
+
+from database import get_db
 
 with app.app_context():
     db = get_db()

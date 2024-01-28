@@ -7,7 +7,8 @@ import cv2
 from skimage import io
 import os
 import requests
-from backend import EDAMAME_KEY
+from dotenv import load_dotenv
+load_dotenv('env/.env')
 
 root_dir = os.path.dirname(__file__)
 labelmap_dir = os.path.join(root_dir, "model/aiy_food_V1_labelmap.csv")
@@ -53,6 +54,9 @@ def request_nutrition(food_item):
     }
     return output
 
+def nutr_from_img(img_path):
+
+    return request_nutrition(predict_image(img_path))
     
 # prediciton = predict_image(test_url)
 # proper_json = request_nutrition(prediciton)
