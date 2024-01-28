@@ -42,21 +42,18 @@ def get_user(db, email):
         
         res = db.user.insert_one(doc)
 
-        return res.inserted_id
+        return doc
     return user
 
 
-#mealdata = img_file
-def insert_day(db, img_filepath, user_id, day_info):
-    meal_data = nutr_from_img(img_filepath)
+def insert_day(db, meal_data, user_id, day_info):
     user = get_user(db,user_id)
-    
 
     doc_day = {
         "user_id" : user["_id"],
         "time" : day_info,
         "totals" : {
-            "co2" : meal_data["co2"],
+            "co2" : meal_data["carbon"],
             "calories" : meal_data["calories"],
             "protein": meal_data["protein"],
             "carbohydrates": meal_data["carbohydrates"],
@@ -82,7 +79,7 @@ def update_today(db, meal_data, id, total_day, day_info):
         "user_id": user["_id"],
         "time" : day_info,
         "totals" : {
-            "co2" : meal_data["co2"] + total_day["totals"]["co2"],
+            "co2" : meal_data["carbon"] + total_day["totals"]["co2"],
             "calories" : meal_data["calories"] + total_day["totals"]["calories"],
             "protein": meal_data["protein"] + total_day["totals"]["protein"],
             "carbohydrates": meal_data["carbohydrates"] + total_day["totals"]["carbohydrates"],
@@ -91,7 +88,7 @@ def update_today(db, meal_data, id, total_day, day_info):
     }
     response = db.days.update_one({"_id": total_day["_id"]}, {"$set": doc_day})
     
-    return response.json()
+    return doc_day
 
 # add meal func
 # date, userid
@@ -99,22 +96,23 @@ def update_today(db, meal_data, id, total_day, day_info):
 # create meal and add to day
 def add_meal(db,img_filepath,user_id, date):
     meal_data = nutr_from_img(img_filepath)
-    day_id = db.days.find({"user_id": user_id, "time": date})['_id']
-    if day_id is None:
-        res = insert_day(db,meal_data, user_id, date)
-        res = res.inserted_id
+    # day_id = db.days.find_one({"user_id": user_id, "time": date})['_id']
+    day_real = db.days.find_one({"user_id": user_id, "time": date})
+    if day_real is None:
+        day_real = insert_day(db,meal_data, user_id, date)
     else:
-        update_today(db,meal_data, user_id, day_id, date)
+        update_today(db,meal_data, user_id, day_real, date)
     response = db.meals.insert_one({
         "user_id": user_id,
-        "dayid": day_id,
-        "co2" : meal_data["co2"],
+        "dayid": day_real["_id"],
+        "co2" : meal_data["carbon"],
         "calories" : meal_data["calories"],
         "protein": meal_data["protein"],
         "carbohydrates": meal_data["carbohydrates"],
         "fat": meal_data["fat"]
     })
-    return response.json()
+
+    return "hi"
 
 
 
@@ -123,7 +121,7 @@ def get_meals_by_day(db, user_id,date):
     return db.meals.find({"dayid": day_id})
 
 def get_meal(db, meal_id):
-    return db.meals.find({"_id": ObjectId(meal_id)})
+    return db.meals.find_one({"_id": ObjectId(meal_id)})
 
 def get_all_meals(db, user_id):
     return db.meals.find({"user_id": user_id})
@@ -132,13 +130,14 @@ def delete_meal(db, meal_id):
     return db.meals.delete_one({"_id": ObjectId(meal_id)})
 
 def get_day(db, day_id):
-    return db.days.find({"_id": ObjectId(day_id)})
+    return db.days.find_one({"_id": ObjectId(day_id)})
+
 
 def get_day_from_date(db, user_id, date):
-    return db.days.find({"user_id": user_id, "time": date})
+    return db.days.find_one({"user_id": user_id, "time": date})
 
 def get_macros(db, user_id):
-    return db.user.find({"_id": user_id})["macros"]
+    return db.user.find_one({"_id": user_id})["macros"]
 
 def update_macros(db, user_id, macros):
     return db.user.update_one({"_id": user_id}, {"$set": {"macros": macros}})

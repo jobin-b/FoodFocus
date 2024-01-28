@@ -12,6 +12,7 @@ load_dotenv('env/.env')
 
 app.config['DEBUG'] = True
 app.config['MONGO_URI'] = os.getenv('MONGO_URI')
+app.config['EDAMAME_KEY'] = os.getenv('EDAMAME_KEY')
 
 from database import get_db
 
