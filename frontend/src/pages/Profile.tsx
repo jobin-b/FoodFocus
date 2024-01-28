@@ -24,10 +24,28 @@ export default function Profile(): JSX.Element {
           <div className="w-full h-full">
             <Navbar name={user.name ?? ""} image={user.picture ?? ""} />
 
-            <div className="flex flex-col p-10">
-              <h1 className="text-2xl">Today</h1>
-              <ProgBar label="Calories" percent={0.5} />
-              <button className="w-full rounded-lg bg-orange-400 hover:bg-orange-500 transition-all duration-200 text-white py-2">New Meal</button>
+            <div className="flex flex-col md:grid md:grid-cols-2 p-10">
+              <div className="flex flex-col w-full">
+                <h1 className="text-2xl">Today's Totals</h1>
+                <ProgBar label="Calories" percent={0.5} />
+                <ProgBar label="Protein" percent={0.2} />
+                <ProgBar label="Carbs" percent={0.25} />
+                <ProgBar label="CO2" percent={0.4} />
+              </div>
+              <div className="flex flex-col w-full">
+                <h2>You've Eaten</h2>
+              </div>
+              <div className="flex flex-col">
+                <button className="w-full rounded-lg bg-orange-400 hover:bg-orange-500 transition-all duration-200 text-white py-2">New Meal</button>
+                <form>
+                  <label>Item</label>
+                  <input name="foodItem"></input>
+                  <label>Calories</label>
+                  <input name="calories"></input>
+                  <label>CO2 Released</label>
+                  <input name="co2release"></input>
+                </form>
+              </div>
             </div>
           </div>
         )

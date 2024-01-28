@@ -11,14 +11,15 @@ from datetime import datetime
 
 import os
 
-def init_db():
-    db = g._database = PyMongo(current_app).db
+# def init_db():
+#     db = g._database = PyMongo(current_app).db
 
 def get_db():
     db = getattr(g, "_database", None)
     if db is None:
         db = g._database = PyMongo(current_app).db
-        
+    
+    #print(db is None or db)
     return db
 
 
@@ -26,14 +27,16 @@ def get_db():
 db = LocalProxy(get_db)
 
 def get_user(db, email):
-    if db.user.find({"email": email}) is None:
+    user = db.user.find_one({"email": email})
+    if user is None:
         doc = {
             "_id": email,
             "email": email
         }
-        return db.user.insert_one(doc)
-    
-    return db.user.find({"email": email})
+        db.user.insert_one(doc)
+        return doc
+    return user
+
 
 
 def insert_day(db, meal_data, id, day):

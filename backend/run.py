@@ -21,8 +21,8 @@ from flask import Flask, jsonify
 
 # import routes
 
-from backend.routes import create_app
-app = create_app()
+# from backend import create_app
+# app = create_app()
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()
