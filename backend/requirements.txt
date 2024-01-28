@@ -8,8 +8,11 @@ click==8.1.7
 colorama==0.4.6
 cssselect==1.2.0
 d==0.2.2
+DateTime==5.4
+dnspython==2.5.0
 Flask==3.0.1
 Flask-Cors==4.0.0
+Flask-PyMongo==2.3.0
 flatbuffers==23.5.26
 gast==0.5.4
 google-auth==2.27.0
@@ -41,6 +44,7 @@ protobuf==4.23.4
 pyasn1==0.5.1
 pyasn1-modules==0.3.0
 Pygments==2.17.2
+pymongo==4.6.1
 pyquery==2.0.0
 python-dateutil==2.8.2
 python-dotenv==1.0.1
@@ -64,3 +68,4 @@ tzdata==2023.4
 urllib3==2.1.0
 Werkzeug==3.0.1
 wrapt==1.14.1
+zope.interface==6.1

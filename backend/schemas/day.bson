@@ -1,0 +1,13 @@
+day_schema{
+    "_id": "key",
+    "user_id" : "ObjectId",
+    "time" : "string", 
+    # it will be MM/DD/YYYY
+    "totals" : {
+        "co2" : "number",
+        "calories" : "number",
+        "protein": "number",
+        "carbohydrates": "number",
+        "fat": "number"}
+    
+}

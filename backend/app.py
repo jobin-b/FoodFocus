@@ -19,7 +19,5 @@ MONGO_URI = os.getenv('MONGO_URI')
 EDAMAME_KEY = os.getenv('KEY')
 
 
-@app.route('/')
-def hello_world():
-    return 'Jobin!!'
+import routes
 
