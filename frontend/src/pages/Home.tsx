@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="">
       <LoginButton />
-      <p className="text-3xl font-bold underline">Hello world!</p>
+      <p className="text-2xl font-bold underline">Hello world!</p>
       <p>PLEASE PLEASE USE THE WEBSITE!!!</p>
     </div>
   );
