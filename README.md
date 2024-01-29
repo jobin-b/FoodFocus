@@ -32,13 +32,14 @@
   </dd>
   <dt>Image Classification</dt>
   <dd>
-    This project uses a pre-trained model from Google to classify what meal is in an image.
-    This classification is used to query an external api to get nutrition estimates for it.
+    This project uses 
+    <a href="https://www.kaggle.com/models/google/aiy/frameworks/tensorFlow1/variations/vision-classifier-food-v1">a pre-trained model from Google</a> 
+    to classify what meal is in an image. This classification is used to query an external api to get nutrition estimates for it.
     The model is run locally (on the back-end) using tensorflow.
   </dd>
   <dt>Image Nutrition Data</dt>
   <dd>
-    Image nutrition data is obtained from an external service (Edamame). This api returns
+    Image nutrition data is obtained from the <a href="https://www.edamam.com/">Edamam</a> api. This api returns
     nutrition data estimates given a string which describes a meal/cuisine.
   </dd>
   <dt>Front-End</dt>
