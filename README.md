@@ -45,7 +45,8 @@
   <dd>
     The frontend of this web app uses React to coordinate between the backend and user.
     We decided this framework would be nessecary since we wanted to show the user lots of
-    data that would be updated frequently (charts, daily information).
+    data that would be updated frequently (charts, daily information). TailWindCSS was used to
+    style the website.
   </dd>
   <dt>Authentication</dt>
   <dd>
