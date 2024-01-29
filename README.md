@@ -15,8 +15,8 @@
 <br>
 <ul>
   <li><a href="https://github.com/jobin-b">Jobin Babu </a></li>
-  <li><a href="">Ashton Mamou </a></li>
-  <li><a href="">NaveenJohn Premkumar </a></li>
+  <li><a href="https://github.com/banana2244">Ashton Mamou </a></li>
+  <li><a href="https://github.com/NaveenJohnPremkumar">NaveenJohn Premkumar </a></li>
   <li><a href="https://github.com/RyanA3">Ryan Alsobrooks </a></li>
 </ul>
 
