@@ -13,11 +13,11 @@
 
 <h1>Pages</h1>
 <h2>Landing</h2>
-<img href="/demo/landing.webp">
+<img src="https://raw.githubusercontent.com/jobin-b/FoodFocus/main/demo/landing.webp">
 <h2>Home</h2>
-<img href="/demo/home.webp">
-<h2>Settings</h2>
-<img href="/demo/settings.webp">
+<img src="https://raw.githubusercontent.com/jobin-b/FoodFocus/main/demo/home.webp">
+<h2>Goals & Settings</h2>
+<img src="https://raw.githubusercontent.com/jobin-b/FoodFocus/main/demo/settings.webp">
 
 <h1>Technologies Used</h1>
 <dl>
