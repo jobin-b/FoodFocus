@@ -11,6 +11,49 @@
   shown back to the user as either a part of daily nutrition goals, or long-term tracking.
 </p>
 
+<h1>Pages</h1>
+<h2>Landing</h2>
+<img href="">
+<h2>Home</h2>
+<img href="">
+<h2>Settings</h2>
+<img href="">
+
+<h1>Technologies Used</h1>
+<dl>
+  <dt>Backend</dt>
+  <dd>
+    The back-end service was developed as a RESTful api, which responds to requests with json data.
+    It queries the database, submits requests to external apis, and runs the image classification model locally.
+  </dd>
+  <dt>Database</dt>
+  <dd>
+    This project uses MongoDB as the database, and uses the ORM developed for python to access it.
+  </dd>
+  <dt>Image Classification</dt>
+  <dd>
+    This project uses a pre-trained model from Google to classify what meal is in an image.
+    This classification is used to query an external api to get nutrition estimates for it.
+    The model is run locally (on the back-end) using tensorflow.
+  </dd>
+  <dt>Image Nutrition Data</dt>
+  <dd>
+    Image nutrition data is obtained from an external service (Edamame). This api returns
+    nutrition data estimates given a string which describes a meal/cuisine.
+  </dd>
+  <dt>Front-End</dt>
+  <dd>
+    The frontend of this web app uses React to coordinate between the backend and user.
+    We decided this framework would be nessecary since we wanted to show the user lots of
+    data that would be updated frequently (charts, daily information).
+  </dd>
+  <dt>Authentication</dt>
+  <dd>
+    This project uses Auth0 for user authentication. This was done to both simplify the authentication implementation, 
+    and also simplify logging in for the user.
+  </dd>
+</dl>
+
 <h3>Contributors</h3>
 <br>
 <ul>
