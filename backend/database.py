@@ -126,7 +126,7 @@ def get_meals_by_day(db, user_id,date):
         return None
     
     
-    return db.meals.find({"dayid": ObjectId(str(day.inserted_id))})
+    return db.meals.find({"dayid": day['_id']})
 
 def get_meal(db, meal_id):
     return db.meals.find_one({"_id": ObjectId(meal_id)})
