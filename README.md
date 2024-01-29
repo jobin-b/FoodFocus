@@ -13,11 +13,11 @@
 
 <h1>Pages</h1>
 <h2>Landing</h2>
-<img href="">
+<img href="/demo/landing.webp">
 <h2>Home</h2>
-<img href="">
+<img href="/demo/home.webp">
 <h2>Settings</h2>
-<img href="">
+<img href="/demo/settings.webp">
 
 <h1>Technologies Used</h1>
 <dl>
@@ -62,4 +62,3 @@
   <li><a href="https://github.com/NaveenJohnPremkumar">NaveenJohn Premkumar </a></li>
   <li><a href="https://github.com/RyanA3">Ryan Alsobrooks </a></li>
 </ul>
-
